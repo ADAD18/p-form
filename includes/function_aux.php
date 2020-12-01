@@ -1,9 +1,13 @@
 <?php 
+/**
+ * Archivo de funciones auxiliares
+ * 
+ */
 
 /**
  * Funcion para generar el formato de un Custom Post Type
  * 
- * @param array  $param Parametros del custom post type
+ * @param array $argu //Parametros del custom post type
  * 
  * 
  * @return array 
@@ -53,10 +57,9 @@ function pf_generate_cpt( $argu ){
 /**
  * Funcion para crear y guardar e la base de datos un Custom Post Type
  * 
- * @param  array Parametros para la creacion del custom post type, proporcionados por el formulario
+ * @param  array $param //Parametros para la creacion del custom post type, proporcionados por el formulario
  * 
  */
-
 
 function pf_create_cpt( $param ) {
 
@@ -85,7 +88,7 @@ function pf_create_cpt( $param ) {
 /**
  * Funcion para registrar un Custom Post Type
  * 
- * @param  array Parametros para el registo del custom post type
+ * @param  array  $param //Parametros para el registo del custom post type
  * 
  * @return boolean
  * 
@@ -105,6 +108,13 @@ function pf_add_cpt( $param ){
     }
 }
 
+/**
+ * Funcion para listar los Custom Post Type
+ * 
+ * @return array[]
+ * 
+ */
+
 function pf_listar_cpt() {
 
     $cpt_json = get_option( PF_DB );
@@ -112,6 +122,18 @@ function pf_listar_cpt() {
     
     return $cpt;
 }
+
+/**
+ * Funcion para optener un los Custom Post Type
+ * 
+ * @param string $param // label(slug) del Custom Post Type deseado
+ * @param array[] $cpts //lista de Cutom Post Type donde desea buscar el valor
+ * 
+ * @return array[] //con 2 paramtros: 
+ * [0] array dato del Custom Post Type 
+ * [1] int Posicion del Custom Post Type   
+ * 
+ */
 
 function pf_get_dato_cpt ( $param, $cpts = '' ){
     
@@ -140,6 +162,14 @@ function pf_get_dato_cpt ( $param, $cpts = '' ){
    }
 }
 
+/**
+ * Funcion para actualizar un Custom Post Type
+ * 
+ * @param array $param // datos del Custom Post Type
+ * @param int $id // identificador del Custom Post Type
+ * 
+ */
+
 function pf_update_cpt( $param, $id = '' ) {
 
     $cpts = pf_listar_cpt();
@@ -159,6 +189,12 @@ function pf_update_cpt( $param, $id = '' ) {
     
 } 
 
+/**
+ * Funcion para eliminar un Custom Post Type
+ * 
+ * @param int $id // identificador del Custom Post Type
+ * 
+ */
 function pf_delete_cpt( $id ) {
     
     if ( '' != $id ) { 

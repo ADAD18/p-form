@@ -8,6 +8,11 @@ defined('ABSPATH') or die("Bye bye");
 
     //echo PF_DB;
 
+/**
+ * Funcion para agregar la administracion del plugin en el admin menu
+ * 
+ */
+
 function pf_admin_menu(){
 
     //Agregar el form al admin menu
@@ -25,6 +30,11 @@ function pf_admin_menu(){
 }
 add_action( 'admin_menu', 'pf_admin_menu' );
 
+/**
+ * Funcion para cargar la pagina principar de la administracion
+ * 
+ */
+
 function pf_page(){
     ?>
          <div class="wrap">
@@ -37,6 +47,11 @@ function pf_page(){
 <?php    
 }
 
+/**
+ * Funcion para cargar la pagina del formulario
+ * 
+ */
+
 function pf_page_form(){
     ?>
     <div class="wrap">
@@ -48,6 +63,11 @@ function pf_page_form(){
     <?php
 }
 
+/**
+ * Funcion para cargar la pagina de editar
+ * 
+ */
+
 function pf_page_edit(){
     ?>
     <div class="wrap">
@@ -58,6 +78,11 @@ function pf_page_edit(){
     </div>
     <?php
 }
+
+/**
+ * Funcion para cargar la pagina de borrar
+ * 
+ */
 
 function pf_page_delete(){
     $name = @$_GET['delete'];
@@ -73,8 +98,15 @@ function pf_page_delete(){
     <?php
 }
 
-function pf_form( $param = "Tipo de post" ){
+/**
+ * Funcion para pintar el formulario
+ * 
+ * @param string  $param //titulo que se colocara en el formulario
+ * 
+ */
 
+function pf_form( $param = "Tipo de post" ){
+    
     $dashicons = ['dashicons-admin-post','dashicons-category','dashicons-admin-page','dashicons-format-gallery','dashicons-admin-generic'];
 
     $supports = array( 'title' => 'Titulo', 'editor'=>'Editor', 'author'=>'Autor', 'thumbnail' => 'Imagen destacata', 'excerpt' => 'Extracto' );
@@ -198,6 +230,11 @@ function pf_form( $param = "Tipo de post" ){
 <?php
 }
 
+/**
+ * Funcion para pintar la tabla del listado
+ * 
+ */
+
 function pf_table( ){
       
 ?>
@@ -262,7 +299,14 @@ function pf_table( ){
 <?php
 }
 
-
+/**
+ * Funcion para pintar botones
+ * 
+ * @param int $option //opcion del boton
+ * @param string $title //titulo | mensaje del boton
+ * @param string $link //link del boton
+ * 
+ */
 
 function pf_button( $opction = 1, $title, $link='submit' ){
 
@@ -283,11 +327,27 @@ function pf_button( $opction = 1, $title, $link='submit' ){
     }
 }
 
+/**
+ * Funcion para pintar un titlulo
+ * 
+ * @param string $title
+ * 
+ */
+
 function pf_title( $title ){
     ?>
     <h1 class="wp-heading-inline" > <?php echo $title; ?> </h1>
     <?php
 }
+
+/**
+ * Funcion para pintar el panel de borrado
+ * 
+ * @param string $title //mensaje que se pintara
+ * 
+ * @param array $values //valores a enviar para el borrado
+ * 
+ */
 
 function pf_panel_borrar( $title = '', $link = '', $values = [] ){
     ?>

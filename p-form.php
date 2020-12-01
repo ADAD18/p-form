@@ -11,13 +11,16 @@ License: GPL 2
 
 defined( 'ABSPATH' ) or die( "Bye bye" );
 
+// Definicion de la ruta del directorio
 define( "PF_RUTA", plugin_dir_path( __FILE__ ) );
-
+// definicion del nombre en la base datos
 define( "PF_DB", '_pf_db_cpt' ); 
 
 
-
-
+/**
+ * Funcion de activacion del plugin
+ * 
+ */
 function pf_activation(){
 
     if( ! get_option( PF_DB ) ) {
@@ -29,7 +32,9 @@ function pf_activation(){
 }
 register_activation_hook( __FILE__, 'pf_activation' );
 
-
+/**
+ * Funcion que se invoca en el init
+ */
 function pf_new_type_post() {
 
     $envio=@$_POST[ 'enviar_type_post' ];
@@ -95,6 +100,9 @@ function pf_new_type_post() {
 }
 add_action( 'init', 'pf_new_type_post' );
 
+/**
+ * Funcion para la carga de los scripts
+ */
 function pf_enqueue_scripts(){
 
     wp_register_script( 'pf_script_func', plugins_url(  'assets/js/functions.js',  __FILE__ ) );
@@ -108,7 +116,9 @@ function pf_enqueue_scripts(){
 }
 add_action( 'admin_enqueue_scripts', 'pf_enqueue_scripts' );
 
-
+/**
+ * Funcion para desactivacion del plugin
+ */
 function pf_deactivation_form(){
 
     remove_menu_page( 'pf-form' );
