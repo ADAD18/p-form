@@ -17,7 +17,7 @@ function pf_generate_cpt( $argu ){
     if(  "" != $argu['supports'] ){
         $supports = explode( ',', $argu[ 'supports'] );
     }else{
-        $supports = array('title', 'editor' ); 
+        $supports = array('title', 'editor','thumbnail' ); 
     }
 
     $label = array(

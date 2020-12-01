@@ -75,7 +75,9 @@ function pf_page_delete(){
 
 function pf_form( $param = "Tipo de post" ){
 
-    $supports = array( 'title' => 'Titulo', 'editor'=>'Editor', 'author'=>'Autor', 'thumbail' => 'Imagen destacata', 'excerpt' => 'Extracto' );
+    $dashicons = ['dashicons-admin-post','dashicons-category','dashicons-admin-page','dashicons-format-gallery','dashicons-admin-generic'];
+
+    $supports = array( 'title' => 'Titulo', 'editor'=>'Editor', 'author'=>'Autor', 'thumbnail' => 'Imagen destacata', 'excerpt' => 'Extracto' );
 
     $cpt_id = @$_GET['id'];
     $cpt = @$_GET['edit'];
@@ -172,7 +174,18 @@ function pf_form( $param = "Tipo de post" ){
                     </tr>
                     <tr>
                         <th><label for="menu_icon" require >Icono del <?php echo $param; ?></label></th>
-                        <th> <input type="text" name="menu_icon" value="<?php echo (isset( $dato["menu_icon"] ))?  $dato["menu_icon"] : ''; ?>" ></th>
+                        <th> <span id="pf-icon" class="dashicons dashicons-sticky"></span>  
+                        <select name="menu_icon" id="menu_icon" onchange="iconSelect(this.value)" value="<?php echo (isset( $dato["menu_icon"] ))?  $dato["menu_icon"] : 'dashicons-admin-post'; ?>">
+                            <option  value="dashicons-sticky"  >dashicons-sticky</option>
+                            <?php $num = count( $dashicons );
+                            for ( $i = 0; $i < $num; $i++ ){
+                                ?>
+                                <option  value="<?php echo $dashicons[ $i ]; ?>"  ><?php echo $dashicons[ $i ]; ?></option>
+                                <?php
+                            } ?>
+                        </select>
+                        
+                        <!--<input type="text" name="menu_icon" value="<?php //echo (isset( $dato["menu_icon"] ))?  $dato["menu_icon"] : ''; ?>" ></th>-->
                     </tr>
                     <tr>
                         <th colspan="2" >

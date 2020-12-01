@@ -11,3 +11,9 @@ function pf_add( elemento ){
     //console.log( supports );
     document.getElementById( "supports").value = supports;
 }
+
+function iconSelect( element ){
+    var icon = document.getElementById( "pf-icon" );
+    icon.className = "dashicons " + element;
+    console.log( element );
+}
